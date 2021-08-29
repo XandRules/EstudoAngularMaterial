@@ -1,5 +1,9 @@
 <section class="signup-form">
-    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form 
+    fxLayout="column" 
+    fxLayoutAlign="center center" 
+    fxLayoutGap="10px"
+    #f="ngForm" (ngSubmit)="onSubmit(f)">
        
             <mat-form-field >
                 <input matInput 
@@ -43,6 +47,9 @@
                 <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
                 <mat-datepicker #myDatepicker></mat-datepicker>
             </mat-form-field>
+            <mat-checkbox labelPosition="before" ngModel name="AceitarTermos" required>
+                Aceitar termos e condições.
+            </mat-checkbox> 
         
             <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary">Cadastrar</button>
     </form>
