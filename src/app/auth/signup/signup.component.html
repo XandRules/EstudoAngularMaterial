@@ -23,7 +23,10 @@
                  placeholder="Nome completo" 
                  ngModel name="nome"
                  required
-                 minlength="2">
+                 minlength="2"
+                 #nomeInput="ngModel">
+                 <mat-error *ngIf="nomeInput.hasError('required')"> Nome deve ser preenchido.</mat-error>
+                 <mat-error *ngIf="nomeInput.hasError('minlength')"> Nome deve ser ter 2 caracteres ou mais.</mat-error>
             </mat-form-field>
             
             <mat-form-field hintLabel="A senha deve ter pelo menos 8 caracteres">
@@ -34,7 +37,9 @@
                 required
                 minlength="8"
                 #pwd="ngModel">   
-                <mat-hint align="end">{{pwd.value?.length}} / 8</mat-hint>         
+                <mat-hint align="end">{{pwd.value?.length}} / 8</mat-hint>    
+                <mat-error *ngIf="pwd.hasError('required')"> Senha deve ser preenchido.</mat-error>
+                <mat-error *ngIf="pwd.hasError('minlength')"> Senha deve ser ter 8 caracteres ou mais.</mat-error>     
             </mat-form-field>
             
             <mat-form-field >
@@ -43,9 +48,11 @@
                 placeholder="Data Nacimento" 
                 ngModel name="dataNascimento"
                 [max]="maxDate"
-                required>
+                required
+                #dataNascimento="ngModel">
                 <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
                 <mat-datepicker #myDatepicker></mat-datepicker>
+                <mat-error *ngIf="dataNascimento.hasError('required')">Data de nascimento deve ser preenchida</mat-error>
             </mat-form-field>
             <mat-checkbox labelPosition="before" ngModel name="AceitarTermos" required>
                 Aceitar termos e condições.
