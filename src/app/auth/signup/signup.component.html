@@ -1,23 +1,49 @@
-<section>
-    <form>
+<section class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+       
+            <mat-form-field >
+                <input matInput 
+                type="email" 
+                placeholder="E-mail" 
+                ngModel name="email"
+                email
+                required
+                #emailInput="ngModel">
+                <mat-error *ngIf="emailInput.hasError('required')"> E-mail deve ser preenchido.</mat-error>
+                <mat-error *ngIf="emailInput.hasError('email')"> E-mail deve ser válido.</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field hintLabel="Seu nome completo.">
+                <input matInput 
+                type="text"
+                 placeholder="Nome completo" 
+                 ngModel name="nome"
+                 required
+                 minlength="2">
+            </mat-form-field>
+            
+            <mat-form-field hintLabel="A senha deve ter pelo menos 8 caracteres">
+                <input matInput 
+                type="password" 
+                placeholder="Senha" 
+                ngModel name="password"
+                required
+                minlength="8"
+                #pwd="ngModel">   
+                <mat-hint align="end">{{pwd.value?.length}} / 8</mat-hint>         
+            </mat-form-field>
+            
+            <mat-form-field >
+                <input matInput 
+                [matDatepicker]="myDatepicker" 
+                placeholder="Data Nacimento" 
+                ngModel name="dataNascimento"
+                [max]="maxDate"
+                required>
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
         
-        <mat-form-field >
-            <input matInput type="email" placeholder="E-mail" value="">
-        </mat-form-field>
-        
-        <mat-form-field >
-            <input matInput type="text" placeholder="Nome completo" value="">
-        </mat-form-field>
-        
-        <mat-form-field >
-            <input matInput type="password" placeholder="Senha" value="">            
-        </mat-form-field>
-        
-        <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker">
-            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
-        </mat-form-field>
-
+            <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary">Cadastrar</button>
     </form>
 </section>
