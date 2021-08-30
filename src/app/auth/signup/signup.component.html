@@ -5,7 +5,7 @@
     fxLayoutGap="10px"
     #f="ngForm" (ngSubmit)="onSubmit(f)">
        
-            <mat-form-field >
+            <mat-form-field hintLabel="Digite um e-mail válido.">
                 <input matInput 
                 type="email" 
                 placeholder="E-mail" 
@@ -42,7 +42,7 @@
                 <mat-error *ngIf="pwd.hasError('minlength')"> Senha deve ser ter 8 caracteres ou mais.</mat-error>     
             </mat-form-field>
             
-            <mat-form-field >
+            <mat-form-field hintLabel="Digite sua data de nascimento.">
                 <input matInput 
                 [matDatepicker]="myDatepicker" 
                 placeholder="Data Nacimento" 
