@@ -1,1 +1,36 @@
-<p>login works!</p>
+<section class="signup-form">
+    <form 
+    fxLayout="column" 
+    fxLayoutAlign="center center" 
+    fxLayoutGap="10px"
+    #f="ngForm" >
+       
+            <mat-form-field hintLabel="Digite um e-mail válido.">
+                <input matInput 
+                type="email" 
+                placeholder="E-mail" 
+                ngModel name="email"
+                email
+                required
+                #emailInput="ngModel">
+                <mat-error *ngIf="emailInput.hasError('required')"> E-mail deve ser preenchido.</mat-error>
+                <mat-error *ngIf="emailInput.hasError('email')"> E-mail deve ser válido.</mat-error>
+            </mat-form-field>
+            
+            
+            <mat-form-field >
+                <input matInput 
+                type="password" 
+                placeholder="Senha" 
+                ngModel name="password"
+                required
+                minlength="8"
+                #pwd="ngModel">   
+                 
+                <mat-error *ngIf="pwd.hasError('required')"> Senha deve ser preenchido.</mat-error>
+            </mat-form-field>
+
+        
+            <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary">Login</button>
+    </form>
+</section>
