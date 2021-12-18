@@ -1,3 +1,19 @@
-<mat-card>
-    new trainning
-</mat-card>
+<section class="new-training" fxLayout fxLayoutAlign="center" >
+    <mat-card fxFlex="30rem">
+       <mat-card-title fxLayoutAlign="center">Hora de iniciar o treino</mat-card-title>
+       <mat-card-content fxLayoutAlign="center">
+        <mat-form-field appearance="fill" >
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+       </mat-card-content>
+       <mat-card-actions fxLayoutAlign="center">
+           <button type="submit" mat-button (click)="onStartTraining()">Iniciar</button>
+       </mat-card-actions>
+    </mat-card>
+</section>
+
