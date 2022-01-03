@@ -8,4 +8,4 @@
         </mat-tab>
     </mat-tab-group>
 </section>
-<app-current *ngIf="ongoingTraining"></app-current>    
+<app-current *ngIf="ongoingTraining" (exitDialogEmit)="ongoingTraining = false"></app-current>    
