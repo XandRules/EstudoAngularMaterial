@@ -26,7 +26,9 @@ export class CurrentComponent implements OnInit {
 
   onStop(){
     clearInterval(this.timer);
-    this.dialog.open(StopTrainingComponent)
+    this.dialog.open(StopTrainingComponent, { data: {
+      progress: this.progress
+    }})
     .afterClosed()
     .subscribe((response:boolean) =>{
       response === true ? clearInterval(this.timer) : this.startTraining()
